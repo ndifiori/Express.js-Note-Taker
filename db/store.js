@@ -58,12 +58,12 @@ class Store {
     });
   }
 
-  addNote(note) {
-    
+  
+    addNote(note) {
+
     // object destructuring to set title and text to a variable
     const { title, text } = note;
-    // const note = { title, text, id};
-    // const { title, text } = note;
+    
   
     // let's write an if statement 
       // if the title or the text are NOT true
