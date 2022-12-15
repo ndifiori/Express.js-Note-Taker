@@ -1,4 +1,3 @@
-
 // let's create a new router object 
 const router = require('express').Router();
 
@@ -15,45 +14,40 @@ const store = require('../db/store');
 
   // get( our PATH or endpoint from the url, HANDLER )
 
-router.get('./notes', (req, res) => {
+router.get('/notes', (req, res) => {
 
   // we are bringing the store js file which we exported a new store class from
     // so we will use .getNotes to bring in that method and run the getNotes runction
+  // after running the getNotes function we will then take the result and then
+  // this will return a JSON response of the data
+  // this will catch an error, set the response status and return a json response of the error
   store
     .getNotes()
-
-    // after running the getNotes function we will then take the result and 
     .then((notes) => {
-
-      // this will return a JSON response of the data
       return res.json(notes);
     })
-
-    // this will catch an error, set the response status and return a json response of the error
-    .catch((error) => res.status(500).json(error));
+    .catch((err) => res.status(500).json(err));
 });
 
 // now that we wrote the get method for this route we need to also include the post and delete methods 
+// the req.body contains the key value pairs of data that was submitted in the request body 
 
-router.post('./notes', (res, req) => {
+router.post('/notes', (res, req) => {
   store
-
-    // the req.body contains the key value pairs of data that was submitted in the request body 
     .addNote(req.body)
     .then((note) => res.json(note))
-    .catch((error) => res.status(500).json(error));
+    .catch((err) => res.status(500).json(err));
 });
 
 
 // this is the endpoint that includes the ID parameter
-router.delete('notes/:id', (req,res) => {
+// the req.params.id is the object of the request that contains the id parameter
+router.delete('/notes/:id', (req, res) => {
   store
-
-    // the req.params.id is the object of the request that contains the id parameter
     .removeNote(req.params.id)
-    .then(() => res.json({ok:true}))
-    .catch((error) => res.status(500).json(error));
-})
+    .then(() => res.json({ ok: true }))
+    .catch((err) => res.status(500).json(err));
+});
 
 
 // let's export the router so that we can use it in our server js file

@@ -10,7 +10,7 @@ const htmlRoutes = require('./routes/htmlRoutes');
 const app = express();
 
 // let's store a port number to listen to later on
-const port = 3000;
+const PORT = process.env.PORT || 3001;
 
 // let's add our middleware functionality
   // this allows for whenever a request hits our backend express will execute the functions we passed to app.use in order
@@ -20,7 +20,7 @@ const port = 3000;
 app.use(express.json());
 
 // express.urlencoded will parse incoming requests with urlencoded payloads
-app.use(express.urlencoded( { extended: true } ));
+app.use(express.urlencoded({ extended: true }));
 
 // express.static will allow use to access files from our public folder via HTTP
   // this will then serve static files and will be loaded 
@@ -32,7 +32,7 @@ app.use('/api', apiRoutes);
 // this is stating that all our endpoints in the htmlRoutes file start with /
 app.use('/', htmlRoutes);
 
-app.listen(port, () => console.log(`listening on port ${port}`));
+app.listen(PORT, () => console.log(`listening on port: ${PORT}`));
 
 
 
