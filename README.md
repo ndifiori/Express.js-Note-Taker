@@ -3,7 +3,9 @@ Bootcamp Challenge 11
 
 ## Your Task
 
-My task was to create an application that allowed users to take notes and save them. This application used an Express.js backend and takes advantage of routing to handle our HTTP request. Furthermore, this application uses HTTP methods to save and retrieve data from a JSON file. 
+My task was to create an Note Taker application that uses an Express.js backend. Upon opening this application, click the Get Started Button. This will take the user to a new view, that will allow the them to take notes. To create a new note, click the + button in the upper right hand corner where the user can add a note title and content. Once, a title and text input have been provided a save button icon will appear in the upper right hand corner that wil enable to user to save a note. Lastly, to delete a note, just click the garbage bin icon.
+
+Hope you enjoy this application!
 
 
 ## Preview
